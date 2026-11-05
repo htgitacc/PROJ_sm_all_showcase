@@ -3,6 +3,7 @@
 [![Tesztek](https://github.com/htgitacc/PROJ_sm_all_showcase/actions/workflows/tests.yml/badge.svg)](https://github.com/htgitacc/PROJ_sm_all_showcase/actions/workflows/tests.yml)
 ![Python 3.12 | 3.13](https://img.shields.io/badge/python-3.12%20%7C%203.13-blue)
 ![Streamlit](https://img.shields.io/badge/streamlit-1.63-red)
+![Licenc: MIT + CC BY 4.0](https://img.shields.io/badge/licenc-MIT%20%2B%20CC%20BY%204.0-green)
 
 Egy általam összeállított **kutatás, működési modell és működő prototípus** arról, hogyan lehet egy olyan
 Scrum-csapatot vezetni, amelyben a fejlesztők mellett **AI-ügynökök** is dolgoznak. A kiindulás egy kitalált, de
@@ -98,3 +99,11 @@ szinttel jelölve.
 
 A képernyőképekhez és az animáció képeihez egyszer: `.venv/bin/playwright install chromium`, majd
 `.venv/bin/python prototipus/eszkozok/showcase_kepek.py`.
+
+## Licenc
+
+- A **kód** (`prototipus/`): [MIT](LICENSE).
+- A **tartalom** (`kutatas/`, `koncepcio/`, `spike/`, `sm-all.md`, `docs/`, a képernyőképek):
+  [CC BY 4.0](LICENSE-CONTENT.md) — szabadon felhasználható és átdolgozható, a forrás megjelölésével.
+
+A pilot, a vállalat és a csapat kitaláltak.
