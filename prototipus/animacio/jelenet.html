@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A munka útja — AI-ügynökös iteráció</title>
+<style>/*__CSS__*/</style>
+</head>
+<body>
+<div class="burok">
+
+  <div class="fejlec">
+    <span class="ora" id="ora"></span>
+    <span class="iteracio-cimke" id="iteracio"></span>
+    <span class="iteracio-cimke" id="allas"></span>
+  </div>
+
+  <div class="esemeny-sor" id="esemeny"></div>
+
+  <div class="vezerlo">
+    <button id="jatszas">Lejátszás</button>
+    <button id="elozo" class="lepteto" title="Előző lépés (←)" aria-label="Előző lépés">‹</button>
+    <input type="range" class="kurzor" id="kurzor" min="0" value="0" aria-label="Időkurzor">
+    <button id="kovetkezo" class="lepteto" title="Következő lépés (→)" aria-label="Következő lépés">›</button>
+    <span class="keretsav-szoveg">Sebesség:</span>
+    <button data-sebesseg="1">1×</button>
+    <button data-sebesseg="4" aria-pressed="true">4×</button>
+    <button data-sebesseg="16">16×</button>
+  </div>
+
+  <div class="fejezetek" id="fejezetek"></div>
+
+  <div class="szinpad-doboz">
+    <svg id="szinpad" viewBox="0 0 1040 600" role="img"
+         aria-label="A munka útja a backlogtól a beolvasztásig, ügynöki és emberi szakaszokkal"></svg>
+  </div>
+
+  <div class="jelmagyarazat">
+    <span><i class="jel-ugynok"></i> ügynöki munka</span>
+    <span><i class="jel-ember"></i> emberi bírálat — ez a szűk keresztmetszet</span>
+    <span><i class="jel-beolvadt"></i> beolvadt</span>
+    <span><i class="jel-levezetett"></i> levezetett lépés: a modellből következik, a napló nem rögzíti</span>
+    <span>● magas kockázatú elem</span>
+  </div>
+
+</div>
+
+<script>window.FORGATOKONYV = __FORGATOKONYV__;</script>
+<script>/*__JS__*/</script>
+</body>
+</html>

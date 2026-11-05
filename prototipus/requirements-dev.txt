@@ -1,0 +1,5 @@
+-r requirements.txt
+pytest==9.1.1
+# Csak a képernyőkép-készítéshez (eszkozok/kepernyokepek.py). A böngészőbinárist
+# a gépen a PROJ_nlp már letöltötte a közös ~/.cache/ms-playwright alá.
+playwright==1.62.0

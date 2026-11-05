@@ -1,0 +1,9 @@
+kod,cim,hibaosztaly,letrehozva,iteracio,kategoria,kivalto_elem,tipus
+SZ-01,A generált kód követi a projekt lint- és formázási beállításait,,2026-09-01 09:00,0,stilus,,szabaly
+SZ-02,Új nyilvános függvényhez docstring és típusannotáció kötelező,,2026-09-01 09:00,0,stilus,,szabaly
+SZ-03,Külső hívás körül kötelező a hibakezelés és az időtúllépés,,2026-09-01 09:00,0,helyesseg,,szabaly
+SZ-04,Titkot és kulcsot soha nem írunk a kódba vagy a naplóba,,2026-09-01 09:00,0,adatvedelem,,szabaly
+SZ-05,"Adatbázis-lekérdezés csak paraméterezve, sztringösszefűzés nélkül",,2026-09-01 09:00,0,biztonsag,,szabaly
+SZ-06,A verifikáló csak a teljes tesztkészlet igazolt lefutása után jelenthet sikert,HO-01,2026-09-04 17:20,1,verifikacio,I1-5,szabaly
+SZ-07,Kontaktadatot visszaadó végpont kizárólag a láthatósági szűrőn keresztül szolgálhat ki,HO-02,2026-09-04 17:20,1,adatvedelem,I1-5,szabaly
+AT-01,Architektúrateszt: bármely kontaktadatot elérő útvonal a szűrő megkerülésével elbukik,HO-02,2026-09-09 17:30,2,adatvedelem,I2-7,gepi_kapu

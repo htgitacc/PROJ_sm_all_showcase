@@ -1,0 +1,22 @@
+name: Tesztek
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-24.04  # rögzítve: az ubuntu-latest 2026.10.19-től Ubuntu 26
+    strategy:
+      fail-fast: false  # mindkét verzió eredménye látsszon, akkor is, ha az egyik bukik
+      matrix:
+        python-version: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: prototipus/requirements-dev.txt
+      - run: pip install -r prototipus/requirements-dev.txt
+      - run: python -m pytest prototipus -q

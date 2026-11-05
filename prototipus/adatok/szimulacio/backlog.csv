@@ -1,0 +1,37 @@
+cim,tipus,magas_kockazat,bonyolultsag
+Dokumentumtár adatmodellje,kod,nem,2
+Dokumentumtár: feltöltés és verziózás,kod,nem,3
+Dokumentumtár: jogosultsági szabályok,kod,igen,3
+Teljes szöveges keresés a dokumentumokban,kod,nem,3
+Hírfolyam adatmodellje,kod,nem,1
+Hírfolyam szerkesztői felülete,kod,nem,2
+Hírfolyam a kezdőlapon,kod,nem,2
+Értesítési beállítások munkatársanként,kod,nem,2
+Naptárnézet: szabadságok megjelenítése,kod,nem,2
+Dokumentumtár mobilnézete,kod,nem,1
+Kereső relevancia-hangolása,kod,nem,2
+Archiválási szabály a régi dokumentumokra,kod,igen,2
+Egységes profiloldal a munkatársaknak,kod,nem,2
+Helyettesítés beállítása a jóváhagyó távollétére,kod,nem,2
+Bejelentkezés a céges azonosítással (SSO) és munkamenet-kezelés,kod,igen,3
+Kétlépcsős azonosítás kikényszerítése az érzékeny szerepkörökre,kod,igen,3
+Dokumentum-megosztás külső linkkel,kod,igen,3
+Kommentek a dokumentumokon,kod,nem,2
+Kereső: szűrés szervezeti egységre,kod,nem,2
+Hírfolyam: moderálási sor,kod,nem,2
+Naptár: erőforrás-foglalás,kod,nem,3
+Exportálás: dokumentumcsomag letöltése,kod,nem,2
+Adminfelület: jogosultságok áttekintése,kod,igen,2
+Törlési szabály és visszaállítási ablak,kod,igen,3
+Riportok: heti aktivitási kimutatás,kod,nem,2
+Riportok: letöltési statisztika,kod,nem,1
+Egységes keresősáv a fejlécben,kod,nem,1
+Kedvencek és követett dokumentumok,kod,nem,2
+Munkafolyamat: jóváhagyási kör dokumentumra,kod,igen,3
+Sablonkezelés a dokumentumtárban,kod,nem,2
+Hírfolyam: célzott közlemények csoportoknak,kod,nem,2
+Naptár: külső naptár importja,kod,nem,2
+Akadálymentesítés: billentyűs navigáció,kod,nem,2
+Auditnapló a jogosultsági változásokról,kod,igen,3
+Tömeges felhasználóimport,kod,igen,2
+Karbantartási mód és állapotoldal,kod,nem,1

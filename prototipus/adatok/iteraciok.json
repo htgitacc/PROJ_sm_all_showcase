@@ -1,0 +1,39 @@
+{
+  "konfiguracio": {
+    "wip_korlatok": {
+      "Kész a kezdésre": 3,
+      "Megvalósítás alatt": 4,
+      "Bírálatra vár": 4
+    },
+    "meretkorlat_sor": 200,
+    "oregedesi_kuszob_ora": 8,
+    "terheles_egyenetlenseg_kuszob": 0.65,
+    "parameter_elteres_kuszob": 0.15,
+    "gumibelyegzo_iteracio_kuszob": 3,
+    "szeniorok": ["Kovács Kata", "Szabó Márton"]
+  },
+  "iteraciok": [
+    {
+      "id": 1,
+      "nev": "Munkatárs-kereső",
+      "kezdet": "2026-09-02",
+      "veg": "2026-09-04",
+      "napok": 3,
+      "vallalt": 9,
+      "parameterek_terv": { "R": 3.0, "t": 70, "r": 0.5 },
+      "terv_forrasa": "Kiinduló feltevés, mérés nélkül",
+      "megjegyzes": "Első iteráció. A paraméterek feltevések, a mérés most kezdődik."
+    },
+    {
+      "id": 2,
+      "nev": "Távollét-igénylés",
+      "kezdet": "2026-09-07",
+      "veg": "2026-09-09",
+      "napok": 3,
+      "vallalt": 8,
+      "parameterek_terv": { "R": 3.25, "t": 90, "r": 0.625 },
+      "terv_forrasa": "Az 1. iteráció mért értékei",
+      "megjegyzes": "A vállalás 9-ről 8-ra csökkent, mert a mért bírálati idő 70 helyett 90 perc lett."
+    }
+  ]
+}

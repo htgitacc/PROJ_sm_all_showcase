@@ -1,0 +1,137 @@
+idopont,elem_id,esemeny,szereplo,biralati_perc,hibaosztaly,reszlet
+2026-09-02 09:15,,darabolas_elutasitva,Nagy Réka (PO),0,,A láthatósági szabály három elem közé szórva — összevonandó
+2026-09-02 10:30,,darabolas_jovahagyva,Nagy Réka (PO),0,,11 elem helyett 9; a vak összehasonlításban az ügynöki darabolás fedettsége bizonyult jobbnak
+2026-09-02 11:10,,darabolas_technikai_ok,Szabó Márton,0,,Technikai átnézés: nincs rejtett tervezési döntés a darabolásban
+2026-09-02 11:20,I1-1,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-02 11:20,I1-2,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-02 11:20,I1-3,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-02 11:20,I1-4,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-02 11:20,I1-5,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-02 11:20,I1-6,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-02 11:20,I1-7,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-02 11:20,I1-8,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-02 11:20,I1-9,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-02 11:30,I1-1,ugynok_indult,implementalo-A,0,,
+2026-09-02 11:30,I1-2,ugynok_indult,implementalo-A,0,,
+2026-09-02 11:35,I1-3,ugynok_indult,implementalo-A,0,,
+2026-09-02 11:35,I1-4,ugynok_indult,implementalo-A,0,,
+2026-09-02 13:40,I1-1,biralatra_kerult,implementalo-A,0,,
+2026-09-02 14:00,I1-1,biralat_indult,Kovács Kata,0,,
+2026-09-02 14:10,I1-2,biralatra_kerult,implementalo-A,0,,
+2026-09-02 14:20,I1-2,biralat_indult,Szabó Márton,0,,
+2026-09-02 15:20,I1-1,biralat_jovahagyva,Kovács Kata,80,,Beolvasztva
+2026-09-02 15:25,I1-5,ugynok_indult,implementalo-A,0,,
+2026-09-02 16:00,I1-2,biralat_visszakuldve,Szabó Márton,100,HO-04,"Nem kezeli a duplikált e-mail-címeket, amelyek a valós HR-adatban előfordulnak"
+2026-09-02 16:10,I1-3,biralatra_kerult,implementalo-A,0,,
+2026-09-03 09:10,I1-5,kapu_bukott,verifikalo-B,0,HO-01,"Korai lezárás: a verifikáló sikert jelentett, de a 11 tesztből 2 futott le"
+2026-09-03 09:30,I1-4,biralatra_kerult,implementalo-A,0,,
+2026-09-03 09:40,I1-2,biralatra_kerult,implementalo-A,0,,Javítás után
+2026-09-03 09:50,I1-6,ugynok_indult,implementalo-A,0,,
+2026-09-03 09:55,I1-7,ugynok_indult,implementalo-A,0,,
+2026-09-03 13:05,I1-6,biralatra_kerult,implementalo-A,0,,
+2026-09-03 13:20,I1-7,biralatra_kerult,implementalo-A,0,,
+2026-09-03 13:25,,ugynok_leallitva,Tóth Bence (SM),0,,A bírálati sor a 4-es korlát fölé ment — új feladat nem indul
+2026-09-03 13:30,I1-3,biralat_indult,Kovács Kata,0,,
+2026-09-03 13:35,I1-2,biralat_indult,Szabó Márton,0,,
+2026-09-03 14:40,I1-2,biralat_jovahagyva,Szabó Márton,65,,
+2026-09-03 14:45,I1-4,biralat_indult,Szabó Márton,0,,
+2026-09-03 15:15,I1-3,biralat_jovahagyva,Kovács Kata,105,,
+2026-09-03 15:20,I1-5,biralatra_kerult,implementalo-A,0,,
+2026-09-03 15:25,I1-5,biztonsagi_talalat,biztonsagi-kereso-A,0,,4 találat a láthatósági szabály környékén
+2026-09-03 15:35,I1-5,talalat_cafolva,cafolo-B,0,,"3 találat kiejtve: 2 fejlesztői alapértelmezés, 1 adatfolyam-félreértés"
+2026-09-03 15:50,I1-5,talalat_elfogadva,Kovács Kata,0,HO-02,A szervezetifa-végpont szűretlenül adja vissza a telefonszámot — javítjuk
+2026-09-03 16:20,I1-4,biralat_visszakuldve,Szabó Márton,95,HO-01,"A verifikáló sikert jelentett, de a határeset-tesztek nem futottak le"
+2026-09-04 09:00,I1-5,biralat_indult,Kovács Kata,0,,
+2026-09-04 09:05,I1-7,biralat_indult,Szabó Márton,0,,
+2026-09-04 10:30,I1-5,biralat_visszakuldve,Kovács Kata,90,HO-02,A biztonsági találat javítása nélkül nem fogadható el
+2026-09-04 10:40,I1-7,biralat_visszakuldve,Szabó Márton,95,HO-02,A szervezeti fa nézet szűretlenül jeleníti meg a telefonszámot
+2026-09-04 10:45,I1-8,ugynok_indult,implementalo-A,0,,
+2026-09-04 10:50,I1-6,biralat_indult,Kovács Kata,0,,
+2026-09-04 11:00,I1-4,biralatra_kerult,implementalo-A,0,,Javítás után
+2026-09-04 11:05,I1-4,biralat_indult,Szabó Márton,0,,
+2026-09-04 12:20,I1-4,biralat_jovahagyva,Szabó Márton,75,,
+2026-09-04 12:30,I1-6,biralat_visszakuldve,Kovács Kata,100,HO-05,Nagy találatszámnál nincs lapozás
+2026-09-04 13:00,I1-5,biralatra_kerult,implementalo-A,0,,Biztonsági javítás után
+2026-09-04 13:10,I1-5,biralat_indult,Kovács Kata,0,,
+2026-09-04 13:30,I1-6,biralatra_kerult,implementalo-A,0,,Javítás után
+2026-09-04 13:40,I1-7,biralatra_kerult,implementalo-A,0,,Javítás után
+2026-09-04 13:45,I1-7,biralat_indult,Szabó Márton,0,,
+2026-09-04 14:30,I1-8,biralatra_kerult,implementalo-A,0,,
+2026-09-04 15:05,I1-5,biralat_jovahagyva,Kovács Kata,115,,
+2026-09-04 15:10,I1-6,biralat_indult,Kovács Kata,0,,
+2026-09-04 15:10,I1-7,biralat_jovahagyva,Szabó Márton,85,,
+2026-09-04 15:15,I1-8,biralat_indult,Szabó Márton,0,,
+2026-09-04 16:20,I1-6,biralat_jovahagyva,Kovács Kata,70,,
+2026-09-04 16:50,I1-8,biralat_jovahagyva,Szabó Márton,95,,
+2026-09-04 16:55,I1-9,atcsuszott,Tóth Bence (SM),0,,Nem fért a bírálati keretbe
+2026-09-04 17:00,,bemutato,Kovács Kata,0,,Az inkrementum bemutatása; megnevezett emberi felelős
+2026-09-04 17:20,,retro_gepi,Tóth Bence (SM),0,,"2 ismétlődő hibaosztály — 2 új szabály (SZ-06, SZ-07)"
+2026-09-04 17:45,,retro_emberi,Tóth Bence (SM),0,,Fő téma: a WIP-korlát miatti leállás megélése
+2026-09-07 09:00,,darabolas_jovahagyva,Nagy Réka (PO),0,,Első körben elfogadva
+2026-09-07 09:15,,darabolas_technikai_ok,Kovács Kata,0,,
+2026-09-07 09:20,I2-1,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-07 09:20,I2-2,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-07 09:20,I2-3,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-07 09:20,I2-4,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-07 09:20,I2-5,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-07 09:20,I2-6,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-07 09:20,I2-7,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-07 09:20,I2-8,spec_jovahagyva,Nagy Réka (PO),0,,
+2026-09-07 09:25,I2-4,karakterizacio_eloirva,Kovács Kata,0,,Refaktorálás: a karakterizációs tesztréteg kötelező előfeltétel
+2026-09-07 09:30,I2-1,ugynok_indult,implementalo-A,0,,
+2026-09-07 09:30,I2-2,ugynok_indult,implementalo-A,0,,
+2026-09-07 09:35,I2-3,ugynok_indult,implementalo-A,0,,
+2026-09-07 09:35,I2-4a,ugynok_indult,implementalo-A,0,,
+2026-09-07 11:30,I2-1,biralatra_kerult,implementalo-A,0,,
+2026-09-07 11:40,I2-1,biralat_indult,Kovács Kata,0,,
+2026-09-07 12:40,I2-1,biralat_jovahagyva,Kovács Kata,60,,
+2026-09-07 12:45,I2-5,ugynok_indult,implementalo-A,0,,
+2026-09-07 13:20,I2-4a,biralatra_kerult,implementalo-A,0,,
+2026-09-07 13:30,I2-4a,biralat_indult,Kovács Kata,0,,
+2026-09-07 14:00,I2-2,biralatra_kerult,implementalo-A,0,,
+2026-09-07 14:10,I2-2,biralat_indult,Szabó Márton,0,,
+2026-09-07 15:05,I2-4a,biralat_visszakuldve,Kovács Kata,95,HO-03,14 tesztből 5 tautologikus: az implementáció kimenetét önmagához méri
+2026-09-07 15:20,I2-2,biralat_jovahagyva,Szabó Márton,70,,
+2026-09-07 15:25,I2-6,ugynok_indult,implementalo-A,0,,
+2026-09-07 16:00,I2-3,biralatra_kerult,implementalo-A,0,,
+2026-09-08 09:00,I2-4a,biralatra_kerult,implementalo-A,0,,Javítás után
+2026-09-08 09:10,I2-4a,biralat_indult,Kovács Kata,0,,
+2026-09-08 09:15,I2-3,biralat_indult,Szabó Márton,0,,
+2026-09-08 10:35,I2-4a,biralat_jovahagyva,Kovács Kata,85,,Rögzített szervezeti struktúrára írt tesztek — használható
+2026-09-08 10:40,I2-4,ugynok_indult,implementalo-A,0,,
+2026-09-08 10:45,I2-3,biralat_visszakuldve,Szabó Márton,90,HO-06,A töredék napok kerekítése nem felel meg a szabályzatnak
+2026-09-08 11:20,I2-6,biralatra_kerult,implementalo-A,0,,
+2026-09-08 11:25,I2-6,meretkorlat_tullepes,Tóth Bence (SM),0,,310 nettó sor a 200-as korlát ellenében
+2026-09-08 11:35,I2-6,visszabontva,Tóth Bence (SM),0,,Szétbontva: űrlap (I2-6a) és naptárnézet (I2-6b)
+2026-09-08 11:40,I2-6a,ugynok_indult,implementalo-A,0,,
+2026-09-08 11:40,I2-6b,ugynok_indult,implementalo-A,0,,
+2026-09-08 13:15,I2-4,kapu_bukott,verifikalo-B,0,,Karakterizációs teszt elbukott: a gyermeklista rendezése név helyett beszúrási sorrend lett
+2026-09-08 13:40,I2-5,biralatra_kerult,implementalo-A,0,,
+2026-09-08 13:50,I2-5,biralat_indult,Kovács Kata,0,,
+2026-09-08 14:30,I2-3,biralatra_kerult,implementalo-A,0,,Javítás után
+2026-09-08 15:05,I2-5,biralat_jovahagyva,Kovács Kata,75,,
+2026-09-08 15:10,I2-3,biralat_indult,Szabó Márton,0,,
+2026-09-08 16:30,I2-3,biralat_jovahagyva,Szabó Márton,80,,
+2026-09-08 16:35,I2-3,mutacios_alapmeres,Szabó Márton,0,,71% — regressziós küszöb rögzítve a szabadságkeret-modulra
+2026-09-08 16:40,I2-7,ugynok_indult,implementalo-A,0,,
+2026-09-09 09:00,I2-4,biralatra_kerult,implementalo-A,0,,A rendezési regresszió javítva
+2026-09-09 09:10,I2-4,biralat_indult,Kovács Kata,0,,
+2026-09-09 10:00,I2-6a,biralatra_kerult,implementalo-A,0,,
+2026-09-09 10:45,I2-4,biralat_jovahagyva,Kovács Kata,95,,
+2026-09-09 10:50,I2-6a,biralat_indult,Szabó Márton,0,,
+2026-09-09 11:00,I2-6b,biralatra_kerult,implementalo-A,0,,
+2026-09-09 12:15,I2-6a,biralat_jovahagyva,Szabó Márton,85,,
+2026-09-09 12:20,I2-6b,biralat_indult,Kovács Kata,0,,
+2026-09-09 13:00,I2-7,biralatra_kerult,implementalo-A,0,,
+2026-09-09 13:05,I2-7,biztonsagi_talalat,biztonsagi-kereso-A,0,,2 találat
+2026-09-09 13:20,I2-7,talalat_cafolva,cafolo-B,0,,1 találat kiejtve
+2026-09-09 13:35,I2-7,talalat_elfogadva,Kovács Kata,0,HO-02,Az új távollét-végpont szűretlenül adja vissza a kérelmező telefonszámát — az SZ-07 szabály nem fogott
+2026-09-09 13:35,I2-6b,biralat_jovahagyva,Kovács Kata,75,,
+2026-09-09 13:45,I2-7,biralat_indult,Szabó Márton,0,,
+2026-09-09 15:15,I2-7,biralat_visszakuldve,Szabó Márton,90,HO-02,A láthatósági szűrő megkerülése javítandó
+2026-09-09 15:30,I2-7,biralatra_kerult,implementalo-A,0,,Javítás után
+2026-09-09 15:35,I2-7,biralat_indult,Szabó Márton,0,,
+2026-09-09 16:59,I2-7,biralat_jovahagyva,Szabó Márton,84,,
+2026-09-09 17:05,I2-8,atcsuszott,Tóth Bence (SM),0,,Nem fért a bírálati keretbe
+2026-09-09 17:10,,bemutato,Szabó Márton,0,,Az inkrementum bemutatása; megnevezett emberi felelős
+2026-09-09 17:30,,retro_gepi,Tóth Bence (SM),0,,SZ-06 fogott; SZ-07 visszatért — eszkaláció a 3. fokra

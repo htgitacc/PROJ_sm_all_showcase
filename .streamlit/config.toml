@@ -1,0 +1,26 @@
+# A Streamlit a munkakönyvtár `.streamlit/config.toml`-ját olvassa. Az éles szolgáltatás
+# `WorkingDirectory`-ja a repó gyökere, ezért ez a fájl élesben is érvényes — de csak
+# újraindítás után (a konfigurációt a Streamlit induláskor olvassa be).
+
+[client]
+# Portfólió-bemutató: a látogató ne lássa a „Deploy” gombot és a fejlesztői menüt.
+toolbarMode = "minimal"
+
+# Egyetlen világos téma, sötét mód nélkül (prototipus/modell/arculat.py): halvány mentás
+# háttér, sötét fenyőzöld szöveg, jáde kiemelés. Nem vakít, félhomályban is olvasható.
+[theme]
+base = "light"
+primaryColor = "#1f7a5a"
+linkColor = "#1f7a5a"
+textColor = "#1f2a24"
+backgroundColor = "#eef4ef"
+secondaryBackgroundColor = "#dfe9e2"
+borderColor = "#c9d8cd"
+baseRadius = "0.6rem"
+# Az „info” dobozok (Tanulság, megjegyzések) a kék helyett türkizben, a palettához illően
+blueTextColor = "#1d5c63"
+blueBackgroundColor = "#d9ebe9"
+chartCategoricalColors = ["#1f7a5a", "#d97706", "#5b53c4", "#0f766e", "#c0392f", "#5c7a1e"]
+
+[theme.sidebar]
+backgroundColor = "#e3ece5"

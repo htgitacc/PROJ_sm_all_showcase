@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.env
+.streamlit/secrets.toml
+.claude/settings.local.json
+
+# Az animáció exportált változata build-termék, nem forrás — a README a gyökérbe
+# írja ki, egyetlen paranccsal bármikor újragenerálható.
+/animacio*.html
+kepernyokepek/
+
+# A showcase-leképezés ideiglenes kimenete (prototipus/eszkozok/build_showcase.py)
+showcase-draft/

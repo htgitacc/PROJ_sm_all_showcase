@@ -1,0 +1,200 @@
+/* Az animációs színpad stílusai.
+   Egyetlen világos téma, mint a felületé (modell/arculat.py): a háttér a mentás papírszín,
+   a szereplők színe jelentést hordoz (ügynök, ember, beolvadt, riasztás). */
+
+:root {
+  --hatter: #eef4ef;
+  --panel: #ffffff;
+  --keret: #e3e1dc;
+  --szoveg: #1f1e1c;
+  --halvany: #6b6862;
+  --ugynok: #5b53c4;
+  --ugynok-halvany: #eceaff;
+  --ember: #b8730f;
+  --ember-halvany: #fdf0dc;
+  --beolvadt: #2e7d52;
+  --beolvadt-halvany: #e4f3ea;
+  --riaszt: #c0392f;
+  --riaszt-halvany: #fbe7e5;
+  --javitas: #a8562c;
+  --racs: #f2f0ec;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--hatter);
+  color: var(--szoveg);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.burok { padding: 12px 16px 16px; }
+
+/* --- Fejléc: óra, iteráció, az aktuális esemény ------------------------------ */
+
+.fejlec {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 18px;
+  margin-bottom: 10px;
+}
+
+.ora {
+  font-variant-numeric: tabular-nums;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.iteracio-cimke {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--racs);
+  border: 1px solid var(--keret);
+  font-size: 12px;
+}
+
+.esemeny-sor {
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--keret);
+  border-left: 3px solid var(--halvany);
+  border-radius: 6px;
+  background: var(--panel);
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.esemeny-sor.ugynok { border-left-color: var(--ugynok); }
+.esemeny-sor.ember { border-left-color: var(--ember); }
+.esemeny-sor.levezetett { border-left-style: dashed; }
+.esemeny-sor b { font-weight: 600; }
+.esemeny-sor .reszlet { color: var(--halvany); }
+
+/* --- Vezérlők ---------------------------------------------------------------- */
+
+.vezerlo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+button {
+  font: inherit;
+  padding: 5px 12px;
+  border: 1px solid var(--keret);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--szoveg);
+  cursor: pointer;
+}
+
+button:hover { border-color: var(--halvany); }
+button[aria-pressed="true"] { background: var(--szoveg); color: var(--hatter); border-color: var(--szoveg); }
+
+.kurzor { flex: 1 1 220px; min-width: 160px; accent-color: var(--ugynok); }
+.lepteto { padding: 2px 12px; font-size: 20px; line-height: 1.2; font-weight: 600; }
+
+.fejezetek { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.fejezetek button { font-size: 12px; padding: 4px 9px; }
+
+/* --- A színpad --------------------------------------------------------------- */
+
+/* Széles ábra: kis képernyőn inkább csúsztatható, mint olvashatatlanná zsugorított. */
+.szinpad-doboz { overflow-x: auto; border: 1px solid var(--keret); border-radius: 8px; background: var(--panel); }
+/* A felső korlát nélkül széles képernyőn aránytalanul magas lenne a színpad, és
+   a beágyazó iframe fix magassága nem tudná követni. */
+.szinpad-doboz svg { display: block; min-width: 860px; max-width: 1240px; width: 100%; height: auto; margin: 0 auto; }
+
+.oszlop-keret { fill: none; stroke: var(--keret); }
+.oszlop-cim { fill: var(--szoveg); font-size: 13px; font-weight: 600; }
+.oszlop-korlat { fill: var(--halvany); font-size: 11px; }
+.rekesz { fill: var(--racs); stroke: none; rx: 4; }
+
+.szuk-keresztmetszet .oszlop-keret { stroke: var(--ember); stroke-width: 2; }
+.szuk-keresztmetszet .oszlop-cim { fill: var(--ember); }
+
+.oszlop.tele .oszlop-keret { stroke: var(--riaszt); stroke-width: 2; }
+.oszlop.tele .oszlop-cim { fill: var(--riaszt); }
+
+/* A kártyák mozgása: minden elem állandó SVG-csoport, csak a helye változik.
+   Ettől a váltás csúszás lesz, nem ugrás — és ettől látszik az átadás iránya. */
+.kartya {
+  transition: transform 420ms cubic-bezier(.4, 0, .2, 1), opacity 260ms linear;
+}
+.kartya rect { rx: 4; }
+/* A beolvadt elem apró jelvénnyé zsugorodik: a méretváltás is animált. */
+.kartya .test {
+  transition: width 420ms cubic-bezier(.4, 0, .2, 1), height 420ms cubic-bezier(.4, 0, .2, 1);
+}
+.kartya .alcim { transition: opacity 200ms linear; }
+.kartya .test { fill: var(--panel); stroke: var(--keret); }
+.kartya .cimke { fill: var(--szoveg); font-size: 11px; font-weight: 600; }
+.kartya .alcim { fill: var(--halvany); font-size: 9.5px; }
+.kartya.rejtett { opacity: 0; }
+
+.kartya.sav-megvalositas .test { fill: var(--ugynok-halvany); stroke: var(--ugynok); }
+.kartya.sav-biralatra .test { fill: var(--ember-halvany); stroke: var(--ember); }
+.kartya.sav-biralat .test { fill: var(--ember-halvany); stroke: var(--ember); stroke-width: 2; }
+.kartya.sav-javitas .test { fill: var(--panel); stroke: var(--javitas); stroke-dasharray: 3 2; }
+.kartya.sav-beolvadt .test { fill: var(--beolvadt-halvany); stroke: var(--beolvadt); }
+.kartya.tullepo .test { fill: var(--riaszt-halvany); stroke: var(--riaszt); stroke-width: 2; }
+.kartya.kockazatos .jelolo { fill: var(--riaszt); }
+.kartya .jelolo { fill: none; }
+
+/* --- Verifikáló kapu --------------------------------------------------------- */
+
+.kapu line { stroke: var(--keret); stroke-width: 2; stroke-dasharray: 4 3; }
+.kapu text { fill: var(--halvany); font-size: 10px; }
+.kapu.aktiv line { stroke: var(--ugynok); }
+.kapu.aktiv text { fill: var(--ugynok); }
+.kapu.bukott line { stroke: var(--riaszt); stroke-dasharray: none; }
+.kapu.bukott text { fill: var(--riaszt); }
+
+/* --- Ügynöksáv --------------------------------------------------------------- */
+
+.ugynok-sav text { font-size: 11px; fill: var(--halvany); }
+.ugynok-sav .nev { fill: var(--ugynok); font-weight: 600; }
+.ugynok-sav.all .nev, .ugynok-sav.all text { fill: var(--riaszt); }
+.ugynok-sav .pont { fill: var(--ugynok); }
+.ugynok-sav.all .pont { fill: var(--riaszt); }
+
+/* --- Keretsáv és lábjegyzet -------------------------------------------------- */
+
+.keretsav-hatter { fill: var(--racs); rx: 4; }
+.keretsav-toltes { fill: var(--ember); rx: 4; transition: width 420ms ease; }
+.keretsav-szoveg { fill: var(--halvany); font-size: 11px; }
+
+.jelmagyarazat {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 10px;
+  font-size: 11.5px;
+  color: var(--halvany);
+}
+
+.jelmagyarazat span { display: inline-flex; align-items: center; gap: 6px; }
+.jelmagyarazat i { width: 14px; height: 10px; border-radius: 2px; display: inline-block; }
+.jel-ugynok { background: var(--ugynok-halvany); border: 1px solid var(--ugynok); }
+.jel-ember { background: var(--ember-halvany); border: 1px solid var(--ember); }
+.jel-beolvadt { background: var(--beolvadt-halvany); border: 1px solid var(--beolvadt); }
+.jel-levezetett { background: transparent; border: 1px dashed var(--halvany); }
+
+/* --- Biztonsági lánc --------------------------------------------------------- */
+
+.lanc { transition: opacity 260ms linear; }
+.lanc.rejtett { opacity: 0; }
+.lanc .doboz { fill: var(--panel); stroke: var(--keret); rx: 6; }
+.lanc .cim { fill: var(--szoveg); font-size: 11.5px; font-weight: 600; }
+.lanc .talalat { fill: var(--riaszt-halvany); stroke: var(--riaszt); rx: 2; }
+.lanc .talalat.kiejtve { fill: none; stroke: var(--halvany); }
+.lanc .magyarazat { fill: var(--halvany); font-size: 10px; }
+
+@media (max-width: 640px) {
+  .burok { padding: 10px; }
+  .ora { font-size: 17px; }
+}

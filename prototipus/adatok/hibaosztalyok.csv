@@ -1,0 +1,7 @@
+kod,nev,kategoria
+HO-01,Verifikáció korai lezárása,verifikacio
+HO-02,Láthatósági szűrő megkerülése,adatvedelem
+HO-03,Tautologikus teszt,teszteles
+HO-04,Adatminőségi feltevés a bemeneten,helyesseg
+HO-05,Hiányzó lapozás nagy találatszámnál,hasznalhatosag
+HO-06,Kerekítési szabály figyelmen kívül hagyása,helyesseg

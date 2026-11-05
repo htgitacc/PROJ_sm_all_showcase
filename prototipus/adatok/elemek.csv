@@ -1,0 +1,21 @@
+elem_id,iteracio,cim,tipus,magas_kockazat,meret_sor,vallalt,szulo
+I1-1,1,Adatmodell és migráció,kod,nem,140,igen,
+I1-2,1,Adatbetöltés a HR-rendszerből,kod,nem,180,igen,
+I1-3,1,Szervezeti fa API,kod,nem,165,igen,
+I1-4,1,Munkatárs-kereső API,kod,nem,150,igen,
+I1-5,1,Láthatósági szabály,kod,igen,120,igen,
+I1-6,1,Keresőfelület,kod,nem,190,igen,
+I1-7,1,Szervezetifa-felület,kod,nem,175,igen,
+I1-8,1,Adatlap nézet,kod,nem,110,igen,
+I1-9,1,Auditnapló a kontaktadat-lekérésekről,kod,nem,95,igen,
+I2-1,2,Auditnapló (átcsúszott),kod,nem,95,igen,
+I2-2,2,Távollét-adatmodell,kod,nem,130,igen,
+I2-3,2,Szabadságkeret-számítás,kod,igen,175,igen,
+I2-4a,2,Karakterizációs tesztréteg — szervezeti fa (az I2-4 előfeltétele),teszt,nem,160,nem,
+I2-4,2,Jóváhagyó meghatározása (refaktorálás),kod,nem,145,igen,
+I2-5,2,Ütközésvizsgálat,kod,nem,120,igen,
+I2-6,2,Igénylőfelület,kod,nem,310,igen,
+I2-6a,2,Igénylőfelület — űrlap,kod,nem,170,nem,I2-6
+I2-6b,2,Igénylőfelület — naptárnézet,kod,nem,145,nem,I2-6
+I2-7,2,Jóváhagyói nézet,kod,nem,160,igen,
+I2-8,2,Értesítés,kod,nem,90,igen,

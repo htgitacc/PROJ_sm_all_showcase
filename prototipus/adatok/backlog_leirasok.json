@@ -1,0 +1,466 @@
+{
+ "_megjegyzes": "Kitalált mintaszöveg: a példa és a szimuláció elemeinek célja és elfogadási feltételei. A darabolás kimenete a koncepció szerint tartalmazná, a példaadat többi része viszont nem rögzíti. Szabadon szerkeszthető. A [PO: …] jelölés feltevést jelöl: valódi pilotban a Product Owner (vagy a HR, a jogi funkció) adja meg. Felülvizsgálva: docs/ac-felulvizsgalat.md.",
+ "pelda": {
+  "I1-1": {
+   "cel": "A munkatársak és a szervezeti egységek tárolása, ez minden további elem alapja.",
+   "elfogadasi_feltetelek": [
+    "A munkatárs, a szervezeti egység és a beosztás táblái migrációval létrejönnek, üres adatbázisról is.",
+    "Minden munkatársnak pontosan egy közvetlen szervezeti egysége van; ezt adatbázis-megszorítás is kikényszeríti.",
+    "A migráció visszagörgethető, és a visszagörgetés után a séma az eredeti."
+   ]
+  },
+  "I1-2": {
+   "cel": "A munkatársi törzsadat átvétele a HR-rendszer exportjából.",
+   "elfogadasi_feltetelek": [
+    "A betöltés idempotens: kétszeri futás után ugyanaz az állapot.",
+    "Egy hibás sor nem állítja le a betöltést; a sor az okával a hibalistába kerül, és a betöltés végén összesítés készül (betöltött és hibás sorok száma).",
+    "Érvényes sor: van azonosítója, neve és létező szervezeti egysége. Betöltés után a munkatársak száma egyenlő az érvényes sorok számával.",
+    "A szervezeti egységek hierarchiájában nincs kör; körkörös hivatkozást tartalmazó exportot a betöltés elutasít."
+   ]
+  },
+  "I1-3": {
+   "cel": "A szervezeti fa lekérdezhetősége programozható felületen.",
+   "elfogadasi_feltetelek": [
+    "Egy egységre lekérhető a közvetlen alá- és fölérendelt egysége.",
+    "A teljes fa lekérése [PO: 5000] egységig [PO: 1 másodpercen] belül válaszol."
+   ],
+   "megjegyzes": "Szándékos hiány a példa történetéhez: ez az elem nem mondja ki, hogy a végpont kontaktadatot csak a láthatósági szabály szerint adhat vissza. A darabolásnál pontosan ez csúszott át, és a biztonsági lánc fogta meg (1. iteráció, 2. nap). Valódi darabolásnál ennek itt a helye."
+  },
+  "I1-4": {
+   "cel": "A munkatársak kereshetősége programozható felületen.",
+   "elfogadasi_feltetelek": [
+    "Névre, beosztásra és egységre kereshető, ékezetfüggetlenül.",
+    "A találati lista lapozott, egy oldalon legfeljebb [PO: 25] találat van.",
+    "Üres keresés üres listát ad, nem hibát.",
+    "A találatokban a kontaktadat a láthatósági szabály szerint szerepel."
+   ]
+  },
+  "I1-5": {
+   "cel": "Annak szabályozása, hogy ki milyen adatot láthat másokról. Az iteráció gerince, ezért magas kockázatú.",
+   "elfogadasi_feltetelek": [
+    "Az alapadatokat (név, beosztás, egység) minden bejelentkezett munkatárs látja.",
+    "A telefonszámot és az irodahelyet csak az azonos egységben vagy az egység bármely fölérendelt egységében dolgozó látja; alárendelt és párhuzamos egységből nem látható.",
+    "A kereső, az adatlap és a fa ugyanarra a kérésre ugyanazt a mezőkészletet adja vissza.",
+    "Más egységből, alárendelt egységből és bejelentkezés nélkül a telefonszám és az irodahely a válaszban sem szerepel."
+   ]
+  },
+  "I1-6": {
+   "cel": "A keresés használható felülete.",
+   "elfogadasi_feltetelek": [
+    "Gépelés közben, [PO: 300 ms] késleltetéssel frissül a találati lista.",
+    "Találat nélkül a lista helyén ez áll: „Nincs találat erre: …”, és a beírt kifejezés látszik.",
+    "A mező Tab-bal elérhető; a nyilak a találatok között lépnek, az Enter a kijelölt adatlapot nyitja, az Esc törli a keresést."
+   ]
+  },
+  "I1-7": {
+   "cel": "A szervezeti fa böngészhető felülete.",
+   "elfogadasi_feltetelek": [
+    "A fa egységenként lenyitható, és a lenyitott állapot ugyanabban a munkamenetben megmarad, ha az adatlapról visszalép.",
+    "Egy egységre kattintva látszanak a munkatársai.",
+    "A fa a láthatósági szabályt a kiszolgálótól kapja, a felület nem szűr maga."
+   ]
+  },
+  "I1-8": {
+   "cel": "Egy munkatárs adatainak megjelenítése.",
+   "elfogadasi_feltetelek": [
+    "Az adatlapon csak az látszik, amit a láthatósági szabály engedélyez.",
+    "A tiltott mező értéke a válaszban sem szerepel, nem csak a felületről hiányzik."
+   ]
+  },
+  "I1-9": {
+   "cel": "Nyom arról, hogy ki nézte meg más munkatárs elérhetőségét.",
+   "elfogadasi_feltetelek": [
+    "Minden telefonszám- és irodahely-lekérés naplóba kerül: ki, kiről, mikor.",
+    "A napló csak bővíthető; módosítás vagy törlés az alkalmazásból nem lehetséges, és a próbálkozás maga is naplózódik.",
+    "[PO-döntés] Ha a lekérést nem sikerül naplózni, a kontaktadat nem jelenik meg, és az üzemeltetés értesítést kap.",
+    "A napló megőrzési ideje rögzített [PO, jog], utána a bejegyzések törlődnek."
+   ]
+  },
+  "I2-1": {
+   "cel": "Az első iterációból átcsúszott auditnapló befejezése (lásd I1-9).",
+   "elfogadasi_feltetelek": [
+    "Minden telefonszám- és irodahely-lekérés naplóba kerül: ki, kiről, mikor.",
+    "A napló csak bővíthető; módosítás vagy törlés az alkalmazásból nem lehetséges, és a próbálkozás maga is naplózódik.",
+    "[PO-döntés] Ha a lekérést nem sikerül naplózni, a kontaktadat nem jelenik meg, és az üzemeltetés értesítést kap.",
+    "A napló megőrzési ideje rögzített [PO, jog], utána a bejegyzések törlődnek."
+   ]
+  },
+  "I2-2": {
+   "cel": "A távollét-igénylés tárolása.",
+   "elfogadasi_feltetelek": [
+    "A távolléttípusok (szabadság, betegszabadság, kiküldetés) és az igénylések táblái migrációval létrejönnek.",
+    "Egy igénylés kezdete nem lehet későbbi a végénél.",
+    "Az igénylés állapota zárt felsorolás: kért, jóváhagyott, elutasított, visszavont."
+   ]
+  },
+  "I2-3": {
+   "cel": "Annak kiszámítása, mennyi szabadsága van egy munkatársnak. Üzleti szabály, ezért magas kockázatú.",
+   "elfogadasi_feltetelek": [
+    "A keret számítási szabályai (alapszabadság, pótszabadságok, arányosítás) a HR által jóváhagyott szabálytáblából jönnek [HR, jog]; a tábla minden sorához tartozik ellenőrző eset.",
+    "Csak a munkatárs munkarendje szerinti munkanapok fogyasztanak keretet.",
+    "Az előző évről átvitt keret felhasználási határideje és feltételei a szabálytáblából jönnek [HR, jog].",
+    "Helyes eredményt ad január 1-jei, év közbeni és december 31-i belépésre, szökőévben és év közbeni munkarend-váltásnál."
+   ]
+  },
+  "I2-4a": {
+   "cel": "A szervezeti fa jelenlegi viselkedésének rögzítése, hogy az I2-4 refaktorálása biztonságos legyen.",
+   "elfogadasi_feltetelek": [
+    "A szervezeti fa jelenlegi viselkedését tesztek rögzítik, a kódot a munka nem módosítja.",
+    "A tesztréteget szenior fejlesztő hagyta jóvá: itt dől el, mi a megőrzendő viselkedés.",
+    "A tesztek a jelenlegi kódon zöldek."
+   ]
+  },
+  "I2-4": {
+   "cel": "A távollét jóváhagyójának kijelölése a szervezeti fából. Refaktorálás, mert az I1 szervezetifa-kódját alakítja át.",
+   "elfogadasi_feltetelek": [
+    "A jóváhagyó a munkatárs közvetlen vezetője; ha nincs, a következő fölérendelt egység vezetője. A vezető saját igénylését a fölérendelt egység vezetője hagyja jóvá; önmagát senki nem hagyhatja jóvá.",
+    "A szervezeti fa karakterizációs tesztjei a refaktorálás után változatlanul zöldek."
+   ]
+  },
+  "I2-5": {
+   "cel": "Átfedő igénylések kiszűrése.",
+   "elfogadasi_feltetelek": [
+    "Ugyanannak a munkatársnak átfedő igénylés nem hagyható jóvá; az elutasított és a visszavont igénylés nem számít átfedésnek.",
+    "Ha egy napon az egység létszámának legalább [PO: 30%-a] távol van, a jóváhagyói nézet figyelmeztet, de nem tilt.",
+    "A vizsgálat a határnapokra is helyes (a kezdőnap egyenlő a végnappal)."
+   ]
+  },
+  "I2-6": {
+   "cel": "A távollét igénylésének felülete. 310 sorral érkezett, ezért visszabontották két elemre (I2-6a, I2-6b).",
+   "elfogadasi_feltetelek": [
+    "Az igénylés űrlapon és naptárnézetben is létrehozható.",
+    "A munka az I2-6a (űrlap) és az I2-6b (naptárnézet) elemekben folytatódik; ezek elfogadási feltételei adják az elem lezárását."
+   ]
+  },
+  "I2-6a": {
+   "cel": "Az igénylés űrlapja.",
+   "elfogadasi_feltetelek": [
+    "Az igénylés típus, kezdet és vég megadásával elküldhető.",
+    "Hiányzó mező, a kezdetnél korábbi vég és a fennmaradó keretet meghaladó igénylés esetén a hiba az érintett mező mellett jelenik meg, és az űrlap nem küldhető el.",
+    "Elküldés után az igénylés állapota „kért”."
+   ]
+  },
+  "I2-6b": {
+   "cel": "Az igénylés naptárnézete.",
+   "elfogadasi_feltetelek": [
+    "A saját igénylések hónapnézetben látszanak, az állapot színnel és felirattal vagy ikonnal is jelölve.",
+    "A naptárban kijelölt napokból igénylés indítható.",
+    "A nyilak napról napra lépnek, az Enter a kijelölt napra igénylést indít."
+   ]
+  },
+  "I2-7": {
+   "cel": "A vezető döntése az igénylésről.",
+   "elfogadasi_feltetelek": [
+    "A jóváhagyó csak a saját beosztottai igénylését látja.",
+    "Jóváhagyás egy lépésben; elutasítás csak kitöltött indoklással.",
+    "A döntés után az igénylés állapota és a jóváhagyó neve rögzül.",
+    "Ha a jóváhagyó maga is távol van, az igénylés a helyettesítési szabály szerint [PO] a helyetteshez kerül."
+   ]
+  },
+  "I2-8": {
+   "cel": "Értesítés az igénylés sorsáról.",
+   "elfogadasi_feltetelek": [
+    "Az igénylő e-mailben értesül a döntésről.",
+    "Az értesítés betegszabadságnál nem nevezi meg a távolléttípust, csak az időszakot.",
+    "Sikertelen küldésnél legfeljebb [PO: 3] alkalommal próbálkozik újra; a végleges hiba a jóváhagyói nézetben is látszik."
+   ]
+  }
+ },
+ "szimulacio": {
+  "Dokumentumtár adatmodellje": {
+   "cel": "A dokumentumtár alapja: mappák, dokumentumok, metaadatok.",
+   "elfogadasi_feltetelek": [
+    "A mappák, dokumentumok és metaadatok táblái migrációval létrejönnek.",
+    "Egy dokumentum pontosan egy mappában van.",
+    "A migráció visszagörgethető."
+   ]
+  },
+  "Dokumentumtár: feltöltés és verziózás": {
+   "cel": "Dokumentum feltöltése úgy, hogy a régi változat megmaradjon.",
+   "elfogadasi_feltetelek": [
+    "Feltöltés után a dokumentum új verziója létrejön, a régi lekérhető marad.",
+    "Legfeljebb [PO: 50 MB], az engedélyezett típusok listája [PO] szerint; túllépéskor az üzenet megnevezi a korlátot.",
+    "Megszakadt feltöltés nem hagy félkész verziót."
+   ]
+  },
+  "Dokumentumtár: jogosultsági szabályok": {
+   "cel": "Annak szabályozása, ki mit olvashat és szerkeszthet a tárban. Magas kockázatú.",
+   "elfogadasi_feltetelek": [
+    "Mappa- és dokumentumszinten állítható az olvasás és a szerkesztés joga.",
+    "Az örökölt jog felülírható; a dokumentum jogosultsági lapján látszik, mely jog öröklött és melyik felülírt.",
+    "Jogosulatlan lekérés a válaszban sem árul el adatot, és a válasz nem különbözteti meg a „nem létezik” és a „nincs jogod” esetet.",
+    "Új mappa alapértelmezett joga [PO] szerint; jog nélkül senki nem fér hozzá."
+   ]
+  },
+  "Teljes szöveges keresés a dokumentumokban": {
+   "cel": "Keresés a dokumentumok tartalmában.",
+   "elfogadasi_feltetelek": [
+    "A keresés a dokumentumok szövegében is talál, ékezetfüggetlenül.",
+    "A találatok csak olyan dokumentumot mutatnak, amelyet a kereső olvashat.",
+    "[PO: 10 000] dokumentumig a válasz [PO: 2 másodpercen] belül megérkezik."
+   ]
+  },
+  "Hírfolyam adatmodellje": {
+   "cel": "A közlemények tárolása.",
+   "elfogadasi_feltetelek": [
+    "A közlemények táblái migrációval létrejönnek.",
+    "Egy közleménynek szerzője, közzétételi ideje és állapota (vázlat, közzétett) van.",
+    "A migráció visszagörgethető."
+   ]
+  },
+  "Hírfolyam szerkesztői felülete": {
+   "cel": "Közlemény írása és közzététele.",
+   "elfogadasi_feltetelek": [
+    "A szerkesztő vázlatot ment, és közzétételre küldi; a közzététel a moderálási sor szerint történik.",
+    "Közzététel előtt előnézet látható.",
+    "Csak szerkesztői jogosultsággal érhető el."
+   ]
+  },
+  "Hírfolyam a kezdőlapon": {
+   "cel": "A közlemények megjelenítése a kezdőlapon.",
+   "elfogadasi_feltetelek": [
+    "A kezdőlapon a legutóbbi [PO: 10] közzétett közlemény látszik, időrendben.",
+    "Vázlat nem jelenik meg.",
+    "Üres hírfolyam esetén a helyén „Még nincs közlemény” áll.",
+    "Célzott közlemény csak a címzettjeinek jelenik meg."
+   ]
+  },
+  "Értesítési beállítások munkatársanként": {
+   "cel": "Mindenki maga választja meg, miről kér értesítést.",
+   "elfogadasi_feltetelek": [
+    "Munkatársanként állítható, mely eseményekről kér e-mailt.",
+    "A beállítás mentés után azonnal érvényes.",
+    "Alapértelmezés: a saját igénylés döntése, a követett dokumentum változása és a neki szóló közlemény."
+   ]
+  },
+  "Naptárnézet: szabadságok megjelenítése": {
+   "cel": "A csapat szabadságainak áttekinthetősége.",
+   "elfogadasi_feltetelek": [
+    "Az egység tagjainak jóváhagyott szabadságai hónapnézetben látszanak.",
+    "Csak jóváhagyott távollét jelenik meg, az igényelt nem.",
+    "A betegszabadság típusa nem látszik, csak a távollét ténye."
+   ]
+  },
+  "Dokumentumtár mobilnézete": {
+   "cel": "A dokumentumtár használhatósága telefonon.",
+   "elfogadasi_feltetelek": [
+    "A mappalista és a dokumentumlap 390 px szélességen is vízszintes görgetés nélkül használható.",
+    "A letöltés gombja legalább 44×44 px érintési felület.",
+    "Mobilon is elérhető a böngészés, a keresés, a letöltés és a verziók megtekintése; a feltöltés [PO] szerint."
+   ]
+  },
+  "Kereső relevancia-hangolása": {
+   "cel": "A találatok sorrendjének javítása.",
+   "elfogadasi_feltetelek": [
+    "A cím szerinti találat a tartalom szerintit megelőzi.",
+    "A friss dokumentum azonos pontszámnál előrébb kerül.",
+    "A PO által adott [PO: 20] minta-lekérdezés mindegyikénél az elvárt dokumentum az első három találat között van."
+   ]
+  },
+  "Archiválási szabály a régi dokumentumokra": {
+   "cel": "Régi dokumentumok automatikus archiválása. Magas kockázatú, mert adatot rejt el.",
+   "elfogadasi_feltetelek": [
+    "A [PO, jog: 3 évnél] régebben nem módosított dokumentumok archiválódnak.",
+    "Archivált dokumentum nem jelenik meg a keresésben; a tulajdonos és az adminisztrátor visszaállíthatja.",
+    "Az archiválás előtt a tulajdonos értesítést kap, és megakadályozhatja."
+   ]
+  },
+  "Egységes profiloldal a munkatársaknak": {
+   "cel": "Egy munkatárs minden adata egy oldalon.",
+   "elfogadasi_feltetelek": [
+    "A profil az alapadatokat és a kapcsolódó dokumentumokat egy oldalon mutatja.",
+    "A látható adatok a láthatósági szabályt követik.",
+    "A profil a keresésből egy kattintással elérhető."
+   ]
+  },
+  "Dokumentum-megosztás külső linkkel": {
+   "cel": "Dokumentum megosztása a cégen kívüli személlyel. Magas kockázatú.",
+   "elfogadasi_feltetelek": [
+    "A link lejárati idővel jön létre, legfeljebb [PO: 14] nappal.",
+    "A link visszavonható, és visszavonás után azonnal használhatatlan.",
+    "Minden külső letöltés naplózódik.",
+    "Külső linket csak megosztási joggal rendelkező munkatárs hozhat létre, és [PO] szerint egyes mappákból (például HR) egyáltalán nem."
+   ]
+  },
+  "Kommentek a dokumentumokon": {
+   "cel": "Megbeszélés a dokumentum mellett.",
+   "elfogadasi_feltetelek": [
+    "A dokumentumhoz hozzászólás fűzhető, a szerző és az idő látszik.",
+    "Saját hozzászólás szerkeszthető és törölhető.",
+    "Csak az látja a hozzászólásokat, aki a dokumentumot olvashatja."
+   ]
+  },
+  "Kereső: szűrés szervezeti egységre": {
+   "cel": "A keresés szűkítése egységre.",
+   "elfogadasi_feltetelek": [
+    "A találatok egy kiválasztott egységre szűkíthetők.",
+    "A felhasználó választhatja, hogy az alegységek is beleszámítsanak (alapértelmezés: igen).",
+    "A szűrés a láthatósági szabályt nem kerüli meg."
+   ]
+  },
+  "Hírfolyam: moderálási sor": {
+   "cel": "Közlemények jóváhagyása közzététel előtt.",
+   "elfogadasi_feltetelek": [
+    "A közzétételre váró közlemények sorban látszanak a moderátornak.",
+    "A moderátor jóváhagy vagy indoklással visszaküld.",
+    "Jóváhagyás nélkül közlemény nem lesz közzétéve."
+   ]
+  },
+  "Naptár: erőforrás-foglalás": {
+   "cel": "Tárgyalók és eszközök foglalása.",
+   "elfogadasi_feltetelek": [
+    "Egy erőforrás egy időpontra csak egyszer foglalható.",
+    "A foglalás a foglaló által lemondható.",
+    "Átfedő foglalási kísérletnél a hibaüzenet megmutatja az ütköző foglalás idejét."
+   ]
+  },
+  "Exportálás: dokumentumcsomag letöltése": {
+   "cel": "Több dokumentum letöltése egyszerre.",
+   "elfogadasi_feltetelek": [
+    "Kijelölt dokumentumok egy csomagban tölthetők le.",
+    "A csomag csak olvasható dokumentumokat tartalmaz.",
+    "Hibás vagy hiányzó fájl esetén a csomag a hibát jelzi, nem hallgatja el.",
+    "Egy csomag legfeljebb [PO] dokumentum vagy [PO] MB."
+   ]
+  },
+  "Adminfelület: jogosultságok áttekintése": {
+   "cel": "Egy helyen látszik, kinek mihez van joga. Magas kockázatú.",
+   "elfogadasi_feltetelek": [
+    "Egy munkatárshoz rendelt összes jogosultság egy nézetben látszik.",
+    "Egy dokumentumra vagy mappára lekérdezhető, kinek van hozzáférése.",
+    "A nézet csak adminisztrátornak érhető el."
+   ]
+  },
+  "Törlési szabály és visszaállítási ablak": {
+   "cel": "Törölt dokumentum megmentése egy ideig. Magas kockázatú.",
+   "elfogadasi_feltetelek": [
+    "A törölt dokumentum [PO: 30] napig visszaállítható.",
+    "A visszaállítási idő után végleg törlődik, és ez naplózódik.",
+    "Visszaállítás csak a tulajdonosnak vagy adminisztrátornak lehetséges."
+   ]
+  },
+  "Riportok: heti aktivitási kimutatás": {
+   "cel": "Heti összegzés a használatról.",
+   "elfogadasi_feltetelek": [
+    "A riport hetente automatikusan elkészül.",
+    "Munkatársi szintű bontást nem tartalmaz, csak egységszintűt, és az [PO: 5] főnél kisebb egységeket összevonva mutatja.",
+    "A riport letölthető."
+   ]
+  },
+  "Riportok: letöltési statisztika": {
+   "cel": "Mi a legtöbbet letöltött dokumentum.",
+   "elfogadasi_feltetelek": [
+    "A dokumentumonkénti letöltésszám lekérhető időszakra.",
+    "A lista a letöltések szerint rendezhető.",
+    "Csak olvasható dokumentumok adatai jelennek meg.",
+    "Azt nem mutatja, ki töltötte le."
+   ]
+  },
+  "Egységes keresősáv a fejlécben": {
+   "cel": "Egy keresőmező, amely mindenhol elérhető.",
+   "elfogadasi_feltetelek": [
+    "A keresősáv minden oldal fejlécében látszik.",
+    "A találatok munkatársakat és dokumentumokat is mutatnak, csoportosítva.",
+    "Billentyűparanccsal (/) a mezőre ugrik a fókusz, ha a fókusz nem beviteli mezőben van."
+   ]
+  },
+  "Kedvencek és követett dokumentumok": {
+   "cel": "Saját lista a fontos dokumentumokról.",
+   "elfogadasi_feltetelek": [
+    "Dokumentum kedvencnek jelölhető és a jelölés visszavonható.",
+    "A követett dokumentum módosításáról a munkatárs értesítést kap.",
+    "A kedvencek saját oldalon listázódnak."
+   ]
+  },
+  "Munkafolyamat: jóváhagyási kör dokumentumra": {
+   "cel": "Dokumentum jóváhagyatása több emberrel. Magas kockázatú.",
+   "elfogadasi_feltetelek": [
+    "A tulajdonos kijelöli a jóváhagyókat és a sorrendet.",
+    "A dokumentum a kör végéig nem módosítható; elutasítás esetén a kör lezárul, és a dokumentum újra szerkeszthető.",
+    "Minden döntés rögzül: ki, mikor, mit."
+   ]
+  },
+  "Sablonkezelés a dokumentumtárban": {
+   "cel": "Újrafelhasználható dokumentumsablonok.",
+   "elfogadasi_feltetelek": [
+    "Dokumentumból sablon készíthető.",
+    "Sablonból új dokumentum hozható létre.",
+    "A sablon módosítása a már létrehozott dokumentumokat nem érinti."
+   ]
+  },
+  "Hírfolyam: célzott közlemények csoportoknak": {
+   "cel": "Közlemény csak bizonyos munkatársaknak.",
+   "elfogadasi_feltetelek": [
+    "Közlemény egységhez vagy csoporthoz köthető.",
+    "Csak a címzettek látják a kezdőlapon.",
+    "A szerző látja a címzettlistát; azt nem, hogy ki olvasta."
+   ]
+  },
+  "Naptár: külső naptár importja": {
+   "cel": "Külső naptár bejegyzéseinek behozása.",
+   "elfogadasi_feltetelek": [
+    "Szabványos naptárfájl (iCalendar) importálható.",
+    "Hibás bejegyzés kihagyásra kerül, és a lista megmutatja, melyik és miért.",
+    "Ismételt import nem hoz létre ismétlődő bejegyzést."
+   ]
+  },
+  "Akadálymentesítés: billentyűs navigáció": {
+   "cel": "Az oldal egérnélküli használhatósága.",
+   "elfogadasi_feltetelek": [
+    "A fő nézetek (keresés, adatlap, dokumentumtár, igénylés) megfelelnek a WCAG 2.1 AA billentyűzetes kritériumainak.",
+    "A fókusz mindig látszik, és sorrendje a vizuális olvasási sorrendet követi.",
+    "Képernyőolvasóval a fő nézetek bejárhatók."
+   ]
+  },
+  "Auditnapló a jogosultsági változásokról": {
+   "cel": "Nyom arról, hogy ki kinek a jogát változtatta meg. Magas kockázatú.",
+   "elfogadasi_feltetelek": [
+    "Minden jogosultsági változás naplózódik: ki, kinek, mit, mikor.",
+    "A napló csak bővíthető; módosítás vagy törlés nem lehetséges, és a próbálkozás maga is naplózódik.",
+    "A napló adminisztrátornak kereshető."
+   ]
+  },
+  "Tömeges felhasználóimport": {
+   "cel": "Sok munkatárs egyszerre történő felvétele. Magas kockázatú.",
+   "elfogadasi_feltetelek": [
+    "Táblázatfájlból több munkatárs importálható.",
+    "Import előtt összefoglaló mutatja, mi fog létrejönni, és jóváhagyás kell hozzá.",
+    "Hibás sor az okával a hibalistába kerül, a többi lefut."
+   ]
+  },
+  "Karbantartási mód és állapotoldal": {
+   "cel": "Tájékoztatás a rendszer leállásáról.",
+   "elfogadasi_feltetelek": [
+    "Karbantartási módban a felhasználó tájékoztatást kap, benne a karbantartás várható végével.",
+    "Az állapotoldal bejelentkezés nélkül is elérhető.",
+    "Adminisztrátor ki- és bekapcsolhatja a módot."
+   ]
+  },
+  "Helyettesítés beállítása a jóváhagyó távollétére": {
+   "cel": "Ha a jóváhagyó vezető szabadságon van, az igénylések ne álljanak meg. (A korábbi „Szervezeti ábra a profilokból” elem helyett, amely a példa I1-7-es szervezetifa-felületét duplikálta.)",
+   "elfogadasi_feltetelek": [
+    "A vezető kijelölhet helyettest egy időszakra.",
+    "Az időszak alatt a hozzá érkező igénylések a helyetteshez kerülnek, és ez az igénylésen látszik.",
+    "A helyettes a saját igénylését nem hagyhatja jóvá; azt a fölérendelt egység vezetője hagyja jóvá."
+   ]
+  },
+  "Bejelentkezés a céges azonosítással (SSO) és munkamenet-kezelés": {
+   "cel": "Belépés az intranetre a cég központi azonosításával. Magas kockázatú.",
+   "elfogadasi_feltetelek": [
+    "Belépés csak a céges azonosítással (SSO) lehetséges; az intranet nem kezel saját jelszót.",
+    "A munkamenet [PO: 30] perc tétlenség után lejár; kilépéskor az intranet munkamenete megszűnik.",
+    "Az intranet a saját hozzáférési eseményeit naplózza (ki, mikor); a napló megőrzési ideje [PO, jog]."
+   ],
+   "megjegyzes": "Feltevés: a cég központi azonosítást (SSO) használ, ahogy egy közepes vállalatnál jellemző. A brief erről nem szól, ezt a PO-nak kell megerősítenie a darabolás jóváhagyása előtt. Ha nincs SSO, az elem saját belépést, fiókzárolást és belépési naplót jelent, és újra kell darabolni."
+  },
+  "Kétlépcsős azonosítás kikényszerítése az érzékeny szerepkörökre": {
+   "cel": "Ahol a legnagyobb a kár, ott ne lehessen kétlépcsős azonosítás nélkül belépni. Magas kockázatú.",
+   "elfogadasi_feltetelek": [
+    "Adminisztrátori és jogosultságkezelői szerepkörbe csak olyan munkamenet léphet, amelynél a központi azonosítás kétlépcsős belépést igazolt.",
+    "Ha az igazolás hiányzik, a szerepkör funkciói nem érhetők el, és a felület megmondja, miért.",
+    "A szerepkör-ellenőrzés eredménye naplózódik."
+   ],
+   "megjegyzes": "Az SSO-feltevés következménye: a második lépcsőt a központi azonosítás adja, az intranet csak ellenőrzi és kikényszeríti."
+  }
+ }
+}
